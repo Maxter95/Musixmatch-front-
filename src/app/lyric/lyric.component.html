@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand navbar-light "  style="opacity:2  ;border-bottom: #00acc1; background-color: azure; height: 50px"  >
+  <div class="container">
+   <H1 style="padding-top: 15px; padding-left:450px"  >Musixmatch </H1>
+  </div>
+</nav>
+<!--/.Navbar-->
+
+<div class="lyrics-finder">
+
+  <div class="search-container" style="padding-top: 15px; padding-left:630px">
+    <div class="search-control"> Entrez le nom d'artiste ou groupe </div>
+    <div class="search-control">
+
+      <input id="songWord" [(ngModel)]="searchText"  placeholder="Artiste/Band">
+
+    </div>
+<div style="padding-top: 15px; padding-left:30px">
+      <button class="btn btn-dark" (click)="chercherMusique(searchText)" >Montrer top 3</button>
+</div>
+  </div>
+
+  <div class="songs-spinner" style="padding-top: 15px; padding-left:630px">
+    <progress style="margin:10px auto;" *ngIf="isLoading" mode="indeterminate"></progress>
+  </div>
+  <div *ngIf="!isLoading && liste !== undefined" class="songs-list">
+    <div *ngFor="let song of liste ">
+      <div class="mat-list-item" style="padding-left: 150px; border-width: thick; border-style: double">
+        Nom du chonson :   <br> -{{ song.track.track_name }}<br>
+        Genre:
+        <div *ngFor="let s of song.track.primary_genres.music_genre_list ">
+           -{{ s.music_genre.music_genre_name }}
+        </div>
+<div style=" padding-left:450px">
+      <button  class="btn btn-light"  (click)="showLyric(song.track.track_id)" >afficher le paroles</button><br><br>
+</div> </div><br>
+    </div>
+  </div>
+  <div *ngIf="liste !== undefined && liste.length == 0 && !isLoading">
+    No song!!
+  </div>
+</div>
