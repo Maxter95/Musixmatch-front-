@@ -26,6 +26,19 @@ getSongByArtist(artist)
     return this.http.post(`http://localhost:3000/posts/lyric`, {'lyrics': l});
 
   }
+
+  chartS() {
+    return this.http.get(`http://localhost:3000/posts/chart`);
+
+  }
+  findall() {
+    return this.http.get(`http://localhost:3000/posts/findall2`);
+
+  }
+  searchNSave() {
+    return this.http.get(`http://localhost:3000/posts/saveSearch`);
+
+  }
 }
 
 

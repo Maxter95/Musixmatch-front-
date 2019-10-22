@@ -12,6 +12,8 @@ import { LyricComponent } from './lyric/lyric.component';
 import { ShowLComponent } from './show-l/show-l.component';
 import {routing} from './app.routing';
 
+import {CategoryService, ChartModule, ColumnSeriesService} from '@syncfusion/ej2-angular-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +28,10 @@ import {routing} from './app.routing';
     FormsModule,
     BrowserModule,
     routing,
+    ChartModule,
     BrowserAnimationsModule
   ],
-  providers: [  LyricsServices],
+  providers: [  LyricsServices,CategoryService, ColumnSeriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
